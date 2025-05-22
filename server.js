@@ -20,6 +20,25 @@ app.get('/', (req, res) => {
     console.log(req.method)
     res.send({"message":"Hello World"})
 });
+const messages = [
+    "Hello World",
+    "Hello, coroutines!",
+    "My favorite feature",
+    "Async made easy",
+    "Coroutines by example",
+    "Check out the Advanced Coroutines codelab next!"
+]
+function getRandomInt(max) {
+  return Math.floor(Math.random() * max);
+}
+app.get('/next_title', (req, res) => {
+    // res.json({
+    //     success: true,
+    // });
+    const message = messages[getRandomInt(messages.length)];
+    console.log('next_title')
+    res.json(message)
+});
 app.get('/users', (req,res) => {
     console.log(req.method)
     res.json([
